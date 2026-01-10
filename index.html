@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mobile LED Billboard Truck Advertising | Delhi NCR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Mobile LED billboard truck advertising across Delhi NCR. High visibility, hyper-local targeting, proof-of-performance photos and videos."
+  />
+  <style>
+    :root {
+      --primary: #0b5ed7;
+      --primary-dark: #084298;
+      --accent: #ff7b00;
+      --bg: #f5f7fb;
+      --text: #222222;
+      --muted: #6c757d;
+      --card-bg: #ffffff;
+      --border: #e2e6ea;
+      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
+      --radius-lg: 14px;
+      --radius-md: 10px;
+      --radius-sm: 6px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      box-shadow: 0 12px 25px rgba(8, 66, 152, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 32px rgba(8, 66, 152, 0.4);
+    }
+
+    .btn-outline {
+      border-color: var(--border);
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.1);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 40px 0 32px;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px 4px 4px;
+      border-radius: 999px;
+      background: rgba(11, 94, 215, 0.06);
+      color: var(--primary-dark);
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+
+    .hero-badge-pill {
+      border-radius: 999px;
+      background: #ffffff;
+      padding: 4px 10px;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08);
+    }
+
+    .hero-title {
+      font-size: clamp(1.9rem, 4vw, 2.5rem);
+      line-height: 1.15;
+      font-weight: 750;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title span {
+      color: var(--primary);
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+      max-width: 470px;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #e6f0ff, #ffffff);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255, 123, 0, 0.12), transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    .hero-card-tag {
+      font-size: 0.75rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 118, 110, 0.07);
+      color: #0f766e;
+      font-weight: 550;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .hero-stat {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 14px;
+      padding: 8px 10px;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      font-size: 0.78rem;
+    }
+
+    .hero-stat-label {
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    .hero-stat-value {
+      font-weight: 650;
+      font-size: 0.86rem;
+    }
+
+    .hero-routes {
+      background: rgba(15, 23, 42, 0.96);
+      color: #e5e7eb;
+      border-radius: 16px;
+      padding: 10px 12px;
+      font-size: 0.76rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-routes span.routes-label {
+      font-weight: 600;
+      font-size: 0.78rem;
+    }
+
+    .hero-routes-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .hero-chip {
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 3px 8px;
+      font-size: 0.74rem;
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    /* Sections */
+    section {
+      padding: 26px 0;
+    }
+
+    .section-header {
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Benefits */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .benefit-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 12px 11px;
+      border: 1px solid var(--border);
+      font-size: 0.86rem;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .benefit-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: rgba(11, 94, 215, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+    }
+
+    .benefit-title {
+      font-weight: 620;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+
+    .benefit-text {
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    /* Industries */
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 0.84rem;
+    }
+
+    .pill-card {
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 5px 12px rgba(15, 23, 42, 0.04);
+    }
+
+    .industries-cta {
+      margin-top: 12px;
+    }
+
+    /* How it works */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 12px 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.04);
+      font-size: 0.86rem;
+    }
+
+    .step-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: rgba(255, 123, 0, 0.12);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 650;
+      margin-bottom: 6px;
+    }
+
+    .step-title {
+      font-weight: 630;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+
+    .step-text {
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    .step-note {
+      margin-top: 10px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* Pricing */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .pricing-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 16px 16px 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+      font-size: 0.88rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(255, 123, 0, 0.08);
+      color: var(--accent);
+      font-weight: 650;
+    }
+
+    .pricing-name {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .pricing-price {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--primary-dark);
+    }
+
+    .pricing-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .pricing-features {
+      list-style: none;
+      font-size: 0.83rem;
+      color: var(--text);
+    }
+
+    .pricing-features li {
+      margin-bottom: 4px;
+      display: flex;
+      gap: 6px;
+    }
+
+    .pricing-features span.check {
+      color: #16a34a;
+      font-size: 0.85rem;
+    }
+
+    .pricing-footer {
+      margin-top: 6px;
+    }
+
+    /* Coverage */
+    .coverage-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 0.84rem;
+    }
+
+    .coverage-item {
+      background: #ffffff;
+      border-radius: 999px;
+      padding: 7px 10px;
+      border: 1px solid var(--border);
+      text-align: center;
+      box-shadow: 0 5px 12px rgba(15, 23, 42, 0.04);
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      font-size: 0.85rem;
+    }
+
+    .gallery-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 10px 10px;
+      border: 1px dashed var(--border);
+      text-align: center;
+    }
+
+    .gallery-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .gallery-title {
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      font-size: 0.84rem;
+    }
+
+    .testimonial-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 12px 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .testimonial-name {
+      font-weight: 650;
+      margin-bottom: 2px;
+    }
+
+    .testimonial-role {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .testimonial-text {
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 18px;
+    }
+
+    .contact-form {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 16px 16px 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+      font-size: 0.85rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 550;
+      font-size: 0.8rem;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 8px 9px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      background: #f9fafb;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(11, 94, 215, 0.15);
+      background: #ffffff;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .upload-hint {
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .contact-side {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .contact-highlight {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+
+    .contact-list {
+      list-style: none;
+      margin: 8px 0 10px;
+      padding-left: 0;
+    }
+
+    .contact-list li {
+      margin-bottom: 4px;
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+    }
+
+    .contact-list span.dot {
+      font-size: 0.7rem;
+      line-height: 1.6;
+    }
+
+    .contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #ffffff;
+      border-radius: 999px;
+      padding: 9px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(37, 211, 102, 0.25);
+    }
+
+    .btn-whatsapp:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 26px;
+      background: #ffffff;
+    }
+
+    .footer-inner {
+      padding: 16px 0 18px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .footer-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-card {
+        max-width: 420px;
+        margin: 0 auto;
+      }
+      .benefits-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .industries-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .steps {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+      .pricing-grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+      .coverage-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .gallery-grid,
+      .testimonials-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .benefits-grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+      .industries-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .coverage-grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+      .gallery-grid,
+      .testimonials-grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+      .hero {
+        padding-top: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="logo">
+          <div class="logo-mark">LED</div>
+          <div>Mobile Billboard Truck Ads</div>
+        </div>
+        <div class="nav-links">
+          <a href="#why">Why LED</a>
+          <a href="#industries">Who It’s For</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#routes">Routes</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-cta">
+          <a href="#contact" class="btn btn-outline">Book Slot</a>
+          <a href="#whatsapp" class="btn btn-primary">WhatsApp Us</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div>
+            <div class="hero-badge">
+              <span class="hero-badge-pill">Delhi NCR</span>
+              Mobile LED Billboard Truck Advertising
+            </div>
+            <h1 class="hero-title">
+              Your business seen by <span>thousands</span> every single day.
+            </h1>
+            <p class="hero-subtitle">
+              Mobile LED billboard trucks covering Delhi, Noida, Gurgaon and Ghaziabad.
+              High visibility, hyper-local targeting and proof-of-performance photos &amp; videos.
+            </p>
+            <div class="hero-cta">
+              <a href="#contact" class="btn btn-primary">Book a Demo</a>
+              <a href="#gallery" class="btn btn-outline">See Sample Ads</a>
+            </div>
+            <div class="hero-meta">
+              <span>✅ GST Registered</span>
+              <span>📍 Focused on Delhi NCR</span>
+              <span>🎯 Perfect for Indian local businesses</span>
+            </div>
+          </div>
+          <div>
+            <div class="hero-card">
+              <div class="hero-card-header">
+                <div class="hero-card-title">Live LED Truck Campaign</div>
+                <div class="hero-card-tag">Proof-of-Performance</div>
+              </div>
+              <div class="hero-stats">
+                <div class="hero-stat">
+                  <div class="hero-stat-label">Daily Impressions*</div>
+                  <div class="hero-stat-value">50,000+ views</div>
+                </div>
+                <div class="hero-stat">
+                  <div class="hero-stat-label">Campaign Type</div>
+                  <div class="hero-stat-value">Restaurant Launch</div>
+                </div>
+                <div class="hero-stat">
+                  <div class="hero-stat-label">City Coverage</div>
+                  <div class="hero-stat-value">Delhi • Noida • Gurgaon</div>
+                </div>
+                <div class="hero-stat">
+                  <div class="hero-stat-label">Ad Format</div>
+                  <div class="hero-stat-value">LED Video + Static</div>
+                </div>
+              </div>
+              <div class="hero-routes">
+                <span class="routes-label">Sample Route:</span>
+                <div class="hero-routes-list">
+                  <span class="hero-chip">Connaught Place</span>
+                  <span class="hero-chip">Karol Bagh</span>
+                  <span class="hero-chip">Rajouri Garden</span>
+                  <span class="hero-chip">Noida Sec 18</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why LED -->
+    <section id="why">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Why Indian businesses choose LED truck ads</h2>
+          <p class="section-subtitle">
+            Designed for Indian roads, markets and real customer traffic — not just online impressions.
+          </p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">👁️</div>
+            <div class="benefit-title">Massive visibility</div>
+            <p class="benefit-text">
+              Your ad moves through markets, metro routes, malls and traffic hotspots where people actually are.
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">📍</div>
+            <div class="benefit-title">Hyper-local targeting</div>
+            <p class="benefit-text">
+              Show your message exactly where your customers live, work, study and shop across Delhi NCR.
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">💰</div>
+            <div class="benefit-title">High ROI</div>
+            <p class="benefit-text">
+              More visibility than static hoardings and flyers, at a fraction of the cost per impression.
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🌙</div>
+            <div class="benefit-title">Day &amp; night impact</div>
+            <p class="benefit-text">
+              Bright LED screens ensure your ad is visible in daylight, evenings and late-night traffic.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industries -->
+    <section id="industries">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Perfect for these Indian businesses</h2>
+          <p class="section-subtitle">
+            If your customers live within a few kilometres, mobile LED advertising is built for you.
+          </p>
+        </div>
+        <div class="industries-grid">
+          <div class="pill-card">Restaurants &amp; Cloud Kitchens</div>
+          <div class="pill-card">Real Estate Builders &amp; Brokers</div>
+          <div class="pill-card">Coaching Centres &amp; Schools</div>
+          <div class="pill-card">Gyms &amp; Fitness Studios</div>
+          <div class="pill-card">Retail Shops &amp; Showrooms</div>
+          <div class="pill-card">Political Campaigns</div>
+          <div class="pill-card">Event Promotions</div>
+          <div class="pill-card">Hospitals &amp; Clinics</div>
+          <div class="pill-card">Beauty Salons &amp; Spas</div>
+          <div class="pill-card">Local Contractors (AC, Plumbing, Painting)</div>
+        </div>
+        <div class="industries-cta">
+          <a href="#contact" class="btn btn-outline">See ads for your industry</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">How it works</h2>
+          <p class="section-subtitle">
+            A simple three-step process from idea to your ad live on our LED truck.
+          </p>
+        </div>
+        <div class="steps">
+          <div class="step-card">
+            <div class="step-badge">1</div>
+            <div class="step-title">Share your ad idea</div>
+            <p class="step-text">
+              Send your logo, images, text and any offer details. Even a simple WhatsApp message is enough to start.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-badge">2</div>
+            <div class="step-title">We design your LED ad</div>
+            <p class="step-text">
+              Our team creates professional LED-optimised designs and motion creatives that grab attention on the road.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-badge">3</div>
+            <div class="step-title">Your ad runs on our truck</div>
+            <p class="step-text">
+              We run your ad on our LED truck through high-traffic routes and share daily photos and videos as proof.
+            </p>
+          </div>
+        </div>
+        <p class="step-note">
+          *You receive proof-of-performance photos &amp; short videos every day, so you always know where your ad ran.
+        </p>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Simple, transparent pricing</h2>
+          <p class="section-subtitle">
+            Choose a package that fits your campaign size. Custom plans available for longer or multi-city campaigns.
+          </p>
+        </div>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-name">Starter Plan</div>
+            <div class="pricing-price">₹4,999 / day</div>
+            <div class="pricing-desc">Best for small businesses testing mobile LED advertising.</div>
+            <ul class="pricing-features">
+              <li><span class="check">✔</span>4 hours run</li>
+              <li><span class="check">✔</span>1 route in your target area</li>
+              <li><span class="check">✔</span>Daily proof-of-performance photos</li>
+              <li><span class="check">✔</span>Ideal for local restaurants, salons and shops</li>
+            </ul>
+            <div class="pricing-footer">
+              <a href="#contact" class="btn btn-outline">Choose Starter</a>
+            </div>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-badge">Most Popular</div>
+            <div class="pricing-name">Business Plan</div>
+            <div class="pricing-price">₹9,999 / day</div>
+            <div class="pricing-desc">For growing brands that want full-day visibility.</div>
+            <ul class="pricing-features">
+              <li><span class="check">✔</span>8 hours run</li>
+              <li><span class="check">✔</span>2 routes covering multiple hotspots</li>
+              <li><span class="check">✔</span>Custom ad design included</li>
+              <li><span class="check">✔</span>Priority timing slots (peak hours)</li>
+              <li><span class="check">✔</span>Perfect for gyms, coaching centres and retail chains</li>
+            </ul>
+            <div class="pricing-footer">
+              <a href="#contact" class="btn btn-primary">Choose Business</a>
+            </div>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-name">Premium Plan</div>
+            <div class="pricing-price">₹24,999 / day</div>
+            <div class="pricing-desc">Maximum coverage for launches, events and political campaigns.</div>
+            <ul class="pricing-features">
+              <li><span class="check">✔</span>Full-day run</li>
+              <li><span class="check">✔</span>Multiple hotspots across Delhi NCR</li>
+              <li><span class="check">✔</span>Festival &amp; weekend boost options</li>
+              <li><span class="check">✔</span>Dedicated route planning with our team</li>
+              <li><span class="check">✔</span>Ideal for real estate launches and major events</li>
+            </ul>
+            <div class="pricing-footer">
+              <a href="#contact" class="btn btn-outline">Get Custom Quote</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coverage -->
+    <section id="routes">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Delhi NCR coverage</h2>
+          <p class="section-subtitle">
+            Our LED trucks cover high-traffic areas across Delhi, Noida, Gurgaon and Ghaziabad.
+          </p>
+        </div>
+        <div class="coverage-grid">
+          <div class="coverage-item">Connaught Place</div>
+          <div class="coverage-item">Karol Bagh</div>
+          <div class="coverage-item">Rajouri Garden</div>
+          <div class="coverage-item">Dwarka</div>
+          <div class="coverage-item">Noida Sector 18</div>
+          <div class="coverage-item">Gurgaon Cyberhub</div>
+          <div class="coverage-item">Ghaziabad</div>
+          <div class="coverage-item">Metro Corridors</div>
+          <div class="coverage-item">Malls &amp; Markets</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Sample ad concepts</h2>
+          <p class="section-subtitle">
+            A quick look at the type of campaigns you can run on our LED trucks.
+          </p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-card">
+            <div class="gallery-tag">Restaurant Offer</div>
+            <div class="gallery-title">“Buy 1 Get 1 Free” Dinner Promo</div>
+          </div>
+          <div class="gallery-card">
+            <div class="gallery-tag">Real Estate</div>
+            <div class="gallery-title">New Tower Launch – Limited Units</div>
+          </div>
+          <div class="gallery-card">
+            <div class="gallery-tag">Coaching Centre</div>
+            <div class="gallery-title">Admissions Open for NEET/JEE</div>
+          </div>
+          <div class="gallery-card">
+            <div class="gallery-tag">Festival Sale</div>
+            <div class="gallery-title">Diwali Mega Discount Week</div>
+          </div>
+          <div class="gallery-card">
+            <div class="gallery-tag">Event Promotion</div>
+            <div class="gallery-title">Live Concert / Exhibition Promotion</div>
+          </div>
+          <div class="gallery-card">
+            <div class="gallery-tag">Political Campaign</div>
+            <div class="gallery-title">Candidate Message &amp; Rally Route</div>
+          </div>
+        </div>
+        <div style="margin-top: 12px;">
+          <a href="#contact" class="btn btn-outline">Request full gallery</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">What our clients say</h2>
+          <p class="section-subtitle">
+            Real results from Indian businesses using mobile LED billboard trucks.
+          </p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-name">Rohit Sharma</div>
+            <div class="testimonial-role">Restaurant Owner</div>
+            <p class="testimonial-text">
+              “Footfall increased by around 40% during our weekend offer. People were literally saying they saw our ad on the truck.”
+            </p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-name">Priya Mehta</div>
+            <div class="testimonial-role">Real Estate Broker</div>
+            <p class="testimonial-text">
+              “We closed three units in one week during our launch campaign. The mobile LED truck helped us reach exact target societies.”
+            </p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-name">Amit Verma</div>
+            <div class="testimonial-role">Gym Owner</div>
+            <p class="testimonial-text">
+              “Best local advertising we’ve tried so far. Much more visible than banners or pamphlets, and the proof videos built trust.”
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Ready to advertise on LED trucks?</h2>
+          <p class="section-subtitle">
+            Share your details and we’ll get back within 30 minutes during working hours.
+          </p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-form">
+            <form>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="name">Name</label>
+                  <input class="form-input" id="name" name="name" placeholder="Your full name" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="business">Business Name</label>
+                  <input class="form-input" id="business" name="business" placeholder="Restaurant / Gym / Builder etc." />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="phone">Phone (WhatsApp preferred)</label>
+                  <input class="form-input" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="city">City</label>
+                  <input class="form-input" id="city" name="city" placeholder="Delhi / Noida / Gurgaon / Ghaziabad" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="logo">Upload Logo / Image (Optional)</label>
+                <input class="form-input" id="logo" name="logo" type="file" />
+                <div class="upload-hint">You can also directly share creatives on WhatsApp after submitting this form.</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="message">Message</label>
+                <textarea class="form-textarea" id="message" name="message" placeholder="Tell us about your campaign, offer or launch date."></textarea>
+              </div>
+              <div style="margin-top: 8px;">
+                <button type="submit" class="btn btn-primary">Book my slot</button>
+              </div>
+            </form>
+          </div>
+          <div class="contact-side">
+            <div class="contact-highlight">
+              Prefer WhatsApp? We’re just one message away.
+            </div>
+            <p>
+              Send your campaign idea, logo and preferred dates on WhatsApp and we’ll share routes, pricing and available slots.
+            </p>
+            <ul class="contact-list">
+              <li><span class="dot">•</span> Quick replies during business hours</li>
+              <li><span class="dot">•</span> Sample ad creatives and route suggestions</li>
+              <li><span class="dot">•</span> Simple approval and payment process</li>
+            </ul>
+            <div id="whatsapp" class="contact-buttons">
+              <!-- Replace the href with your real WhatsApp link -->
+              <a href="https://wa.me/911234567890" class="btn-whatsapp">
+                <span>💬</span> Chat on WhatsApp
+              </a>
+              <a href="#pricing" class="btn btn-outline">View pricing again</a>
+            </div>
+            <p style="margin-top: 10px;">
+              Working hours: 10 AM – 8 PM (IST), Monday to Saturday.  
+              For urgent campaigns, mention “URGENT” in your WhatsApp message.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-links">
+          <a href="#why">Why LED</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#routes">Routes</a>
+          <a href="#gallery">Sample Ads</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-meta">
+          <span>GST Number: YOUR-GST-HERE</span>
+          <span>Instagram | YouTube | Facebook</span>
+          <span>© <span id="year"></span> Mobile LED Billboard Truck Ads</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

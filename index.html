@@ -549,7 +549,6 @@
       border: 1px solid var(--border);
       box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
     }
 
     .gallery-card:hover {
@@ -599,9 +598,22 @@
       animation: float 3s ease-in-out infinite;
     }
 
+    .gallery-visual[aria-hidden] {
+      pointer-events: none;
+    }
+
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-10px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gallery-visual {
+        animation: none;
+      }
+      .gallery-card {
+        transition: none;
+      }
     }
 
     .gallery-badge {
@@ -1660,7 +1672,7 @@
           <!-- Static Billboard Example 1 -->
           <div class="gallery-card">
             <div class="gallery-image billboard-bg">
-              <div class="gallery-visual">🍔</div>
+              <div class="gallery-visual" aria-hidden="true">🍔</div>
               <div class="gallery-badge">Static Billboard</div>
             </div>
             <div class="gallery-content">
@@ -1677,7 +1689,7 @@
           <!-- LED Truck Example 1 -->
           <div class="gallery-card">
             <div class="gallery-image truck-bg">
-              <div class="gallery-visual">🚚</div>
+              <div class="gallery-visual" aria-hidden="true">🚚</div>
               <div class="gallery-badge">LED Truck</div>
             </div>
             <div class="gallery-content">
@@ -1694,7 +1706,7 @@
           <!-- LED Truck Example 2 -->
           <div class="gallery-card">
             <div class="gallery-image truck-bg">
-              <div class="gallery-visual">🎓</div>
+              <div class="gallery-visual" aria-hidden="true">🎓</div>
               <div class="gallery-badge">LED Truck</div>
             </div>
             <div class="gallery-content">
@@ -1711,7 +1723,7 @@
           <!-- Static Billboard Example 2 -->
           <div class="gallery-card">
             <div class="gallery-image festival-bg">
-              <div class="gallery-visual">🎆</div>
+              <div class="gallery-visual" aria-hidden="true">🎆</div>
               <div class="gallery-badge">Static Billboard</div>
             </div>
             <div class="gallery-content">
@@ -1728,7 +1740,7 @@
           <!-- LED Truck Example 3 -->
           <div class="gallery-card">
             <div class="gallery-image event-bg">
-              <div class="gallery-visual">🎵</div>
+              <div class="gallery-visual" aria-hidden="true">🎵</div>
               <div class="gallery-badge">LED Truck</div>
             </div>
             <div class="gallery-content">
@@ -1745,7 +1757,7 @@
           <!-- LED Truck Example 4 -->
           <div class="gallery-card">
             <div class="gallery-image truck-bg">
-              <div class="gallery-visual">🗳️</div>
+              <div class="gallery-visual" aria-hidden="true">🗳️</div>
               <div class="gallery-badge">LED Truck</div>
             </div>
             <div class="gallery-content">
@@ -1762,7 +1774,7 @@
           <!-- Static Billboard Example 3 -->
           <div class="gallery-card">
             <div class="gallery-image real-estate-bg">
-              <div class="gallery-visual">🏢</div>
+              <div class="gallery-visual" aria-hidden="true">🏢</div>
               <div class="gallery-badge">Static Billboard</div>
             </div>
             <div class="gallery-content">
@@ -1779,7 +1791,7 @@
           <!-- LED Truck Example 5 -->
           <div class="gallery-card">
             <div class="gallery-image restaurant-bg">
-              <div class="gallery-visual">🍕</div>
+              <div class="gallery-visual" aria-hidden="true">🍕</div>
               <div class="gallery-badge">LED Truck</div>
             </div>
             <div class="gallery-content">
@@ -1796,7 +1808,7 @@
           <!-- Static Billboard Example 4 -->
           <div class="gallery-card">
             <div class="gallery-image billboard-bg">
-              <div class="gallery-visual">💍</div>
+              <div class="gallery-visual" aria-hidden="true">💍</div>
               <div class="gallery-badge">Static Billboard</div>
             </div>
             <div class="gallery-content">

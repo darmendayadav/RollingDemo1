@@ -538,28 +538,126 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
+      gap: 16px;
       font-size: 0.85rem;
     }
 
     .gallery-card {
       background: #ffffff;
       border-radius: var(--radius-md);
-      padding: 10px 10px;
-      border: 1px dashed var(--border);
-      text-align: center;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .gallery-image.billboard-bg {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .gallery-image.truck-bg {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    .gallery-image.event-bg {
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    }
+
+    .gallery-image.festival-bg {
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    }
+
+    .gallery-image.real-estate-bg {
+      background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+    }
+
+    .gallery-image.restaurant-bg {
+      background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);
+    }
+
+    .gallery-visual {
+      color: white;
+      font-size: 4rem;
+      opacity: 0.9;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .gallery-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-content {
+      padding: 12px 14px;
+      text-align: left;
     }
 
     .gallery-tag {
       font-size: 0.75rem;
       font-weight: 600;
-      color: var(--muted);
-      margin-bottom: 4px;
+      color: var(--primary);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .gallery-title {
-      font-size: 0.86rem;
-      font-weight: 600;
+      font-size: 0.92rem;
+      font-weight: 650;
+      margin-bottom: 6px;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .gallery-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .gallery-features {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .gallery-feature {
+      font-size: 0.7rem;
+      background: var(--bg);
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: var(--text);
     }
 
     /* Testimonials */
@@ -1555,33 +1653,161 @@
         <div class="section-header">
           <h2 class="section-title">Sample ad concepts</h2>
           <p class="section-subtitle">
-            A quick look at the type of campaigns you can run on our LED trucks.
+            Creative campaigns with images, GIFs, and 3D animations on static billboards and mobile LED trucks across Delhi NCR.
           </p>
         </div>
         <div class="gallery-grid">
+          <!-- Static Billboard Example 1 -->
           <div class="gallery-card">
-            <div class="gallery-tag">Restaurant Offer</div>
-            <div class="gallery-title">“Buy 1 Get 1 Free” Dinner Promo</div>
+            <div class="gallery-image billboard-bg">
+              <div class="gallery-visual">🍔</div>
+              <div class="gallery-badge">Static Billboard</div>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-tag">Restaurant Offer</div>
+              <div class="gallery-title">"Buy 1 Get 1 Free" Dinner Promo</div>
+              <div class="gallery-desc">High-traffic city corner placement with animated neon-style graphics</div>
+              <div class="gallery-features">
+                <span class="gallery-feature">📍 Connaught Place</span>
+                <span class="gallery-feature">⏰ 30 Days</span>
+              </div>
+            </div>
           </div>
+
+          <!-- LED Truck Example 1 -->
           <div class="gallery-card">
-            <div class="gallery-tag">Real Estate</div>
-            <div class="gallery-title">New Tower Launch – Limited Units</div>
+            <div class="gallery-image truck-bg">
+              <div class="gallery-visual">🚚</div>
+              <div class="gallery-badge">LED Truck</div>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-tag">Real Estate</div>
+              <div class="gallery-title">New Tower Launch – Limited Units</div>
+              <div class="gallery-desc">Mobile LED displays with 3D building flythrough animations moving through target localities</div>
+              <div class="gallery-features">
+                <span class="gallery-feature">📍 5 Routes</span>
+                <span class="gallery-feature">🎬 Video + GIF</span>
+              </div>
+            </div>
           </div>
+
+          <!-- LED Truck Example 2 -->
           <div class="gallery-card">
-            <div class="gallery-tag">Coaching Centre</div>
-            <div class="gallery-title">Admissions Open for NEET/JEE</div>
+            <div class="gallery-image truck-bg">
+              <div class="gallery-visual">🎓</div>
+              <div class="gallery-badge">LED Truck</div>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-tag">Coaching Centre</div>
+              <div class="gallery-title">Admissions Open for NEET/JEE</div>
+              <div class="gallery-desc">Animated success stories with student testimonials on moving LED screens</div>
+              <div class="gallery-features">
+                <span class="gallery-feature">📍 School Zones</span>
+                <span class="gallery-feature">⏰ Peak Hours</span>
+              </div>
+            </div>
           </div>
+
+          <!-- Static Billboard Example 2 -->
           <div class="gallery-card">
-            <div class="gallery-tag">Festival Sale</div>
-            <div class="gallery-title">Diwali Mega Discount Week</div>
+            <div class="gallery-image festival-bg">
+              <div class="gallery-visual">🎆</div>
+              <div class="gallery-badge">Static Billboard</div>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-tag">Festival Sale</div>
+              <div class="gallery-title">Diwali Mega Discount Week</div>
+              <div class="gallery-desc">Illuminated billboard with LED backlighting and sparkle effect graphics at major intersections</div>
+              <div class="gallery-features">
+                <span class="gallery-feature">📍 3 Locations</span>
+                <span class="gallery-feature">💡 LED Lit</span>
+              </div>
+            </div>
           </div>
+
+          <!-- LED Truck Example 3 -->
           <div class="gallery-card">
-            <div class="gallery-tag">Event Promotion</div>
-            <div class="gallery-title">Live Concert / Exhibition Promotion</div>
+            <div class="gallery-image event-bg">
+              <div class="gallery-visual">🎵</div>
+              <div class="gallery-badge">LED Truck</div>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-tag">Event Promotion</div>
+              <div class="gallery-title">Live Concert / Exhibition</div>
+              <div class="gallery-desc">Dynamic video content with performer clips and countdown timers on mobile LED trucks</div>
+              <div class="gallery-features">
+                <span class="gallery-feature">📍 City Tour</span>
+                <span class="gallery-feature">🎥 Full Video</span>
+              </div>
+            </div>
           </div>
+
+          <!-- LED Truck Example 4 -->
           <div class="gallery-card">
-            <div class="gallery-tag">Political Campaign</div>
-            <div class="gallery-title">Candidate Message &amp; Rally Route</div>
+            <div class="gallery-image truck-bg">
+              <div class="gallery-visual">🗳️</div>
+              <div class="gallery-badge">LED Truck</div>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-tag">Political Campaign</div>
+              <div class="gallery-title">Candidate Message &amp; Rally Route</div>
+              <div class="gallery-desc">Moving LED displays with candidate videos, slogans, and live location tracking</div>
+              <div class="gallery-features">
+                <span class="gallery-feature">📍 Rally Path</span>
+                <span class="gallery-feature">🔴 Live</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Static Billboard Example 3 -->
+          <div class="gallery-card">
+            <div class="gallery-image real-estate-bg">
+              <div class="gallery-visual">🏢</div>
+              <div class="gallery-badge">Static Billboard</div>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-tag">Commercial Space</div>
+              <div class="gallery-title">Premium Office Space for Lease</div>
+              <div class="gallery-desc">Strategic corner placement with QR code and 3D building visualization graphics</div>
+              <div class="gallery-features">
+                <span class="gallery-feature">📍 Business District</span>
+                <span class="gallery-feature">🔗 QR Code</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- LED Truck Example 5 -->
+          <div class="gallery-card">
+            <div class="gallery-image restaurant-bg">
+              <div class="gallery-visual">🍕</div>
+              <div class="gallery-badge">LED Truck</div>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-tag">Food Delivery</div>
+              <div class="gallery-title">New Restaurant Grand Opening</div>
+              <div class="gallery-desc">Mouth-watering food GIFs and discount codes displayed on trucks near residential areas</div>
+              <div class="gallery-features">
+                <span class="gallery-feature">📍 8 Societies</span>
+                <span class="gallery-feature">🎁 Promo Code</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Static Billboard Example 4 -->
+          <div class="gallery-card">
+            <div class="gallery-image billboard-bg">
+              <div class="gallery-visual">💍</div>
+              <div class="gallery-badge">Static Billboard</div>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-tag">Jewelry Store</div>
+              <div class="gallery-title">Wedding Season Collection Launch</div>
+              <div class="gallery-desc">Premium billboard with animated shimmer effects showcasing jewelry collections at busy market corners</div>
+              <div class="gallery-features">
+                <span class="gallery-feature">📍 Market Area</span>
+                <span class="gallery-feature">✨ Animated</span>
+              </div>
+            </div>
           </div>
         </div>
         <div style="margin-top: 12px;">

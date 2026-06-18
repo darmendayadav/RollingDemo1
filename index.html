@@ -805,6 +805,345 @@
         padding-top: 26px;
       }
     }
+
+    /* Calculator Section Styles */
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .calc-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .calc-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .calc-outputs {
+      background: #0f172a;
+      color: #ffffff;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .calc-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .calc-label {
+      font-size: 0.85rem;
+      font-weight: 650;
+      color: var(--text);
+    }
+
+    .calc-outputs .calc-label {
+      color: #94a3b8;
+    }
+
+    .calc-value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .calc-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--border);
+      outline: none;
+      margin: 8px 0 4px;
+    }
+
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--primary);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(11, 94, 215, 0.4);
+      transition: transform 0.1s ease;
+    }
+
+    .calc-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    .slider-ticks {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--muted);
+      padding: 0 2px;
+    }
+
+    .calc-radio-group {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .calc-radio-btn {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 10px 8px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #f9fafb;
+    }
+
+    .calc-radio-btn input {
+      display: none;
+    }
+
+    .calc-radio-btn .radio-title {
+      font-size: 0.85rem;
+      font-weight: 650;
+      color: var(--text);
+    }
+
+    .calc-radio-btn .radio-subtitle {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .calc-radio-btn.active {
+      border-color: var(--primary);
+      background: rgba(11, 94, 215, 0.04);
+      box-shadow: 0 0 0 1px var(--primary);
+    }
+
+    .calc-radio-btn.active .radio-title {
+      color: var(--primary-dark);
+    }
+
+    .calc-output-header {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 8px;
+    }
+
+    .calc-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .calc-metric-box {
+      background: #1e293b;
+      border-radius: var(--radius-md);
+      padding: 12px 10px;
+      text-align: center;
+    }
+
+    .calc-metric-label {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+
+    .calc-metric-val {
+      font-size: 1.1rem;
+      font-weight: 750;
+      color: #ffffff;
+    }
+
+    .calc-metric-sub {
+      font-size: 0.68rem;
+      color: #64748b;
+    }
+
+    .calc-breakdown {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: #94a3b8;
+    }
+
+    .calc-breakdown-row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .calc-breakdown-row span:last-child {
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+
+    .calc-divider {
+      height: 1px;
+      background: #1e293b;
+      margin: 4px 0;
+    }
+
+    .calc-total-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .calc-total-row span:last-child {
+      color: var(--accent);
+      font-size: 1.15rem;
+    }
+
+    .calc-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    @media (max-width: 960px) {
+      .calc-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      max-width: 400px;
+      width: 90%;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+      position: relative;
+      text-align: center;
+      transform: scale(0.9);
+      transition: transform 0.2s ease;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--muted);
+      transition: color 0.1s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--text);
+    }
+
+    .modal-icon {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+    }
+
+    .modal-title {
+      font-size: 1.15rem;
+      font-weight: 750;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .modal-text {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .modal-summary {
+      background: var(--bg);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      text-align: left;
+      font-size: 0.8rem;
+      color: var(--text);
+    }
+
+    .modal-summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .modal-summary-item span:first-child {
+      color: var(--muted);
+    }
+
+    .modal-summary-item span:last-child {
+      font-weight: 600;
+    }
+
+    .form-error-msg {
+      color: #dc3545;
+      font-size: 0.75rem;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .form-input.invalid, .form-textarea.invalid {
+      border-color: #dc3545 !important;
+      box-shadow: 0 0 0 1px rgba(220, 53, 69, 0.15) !important;
+    }
+
+    @keyframes pulse-highlight {
+      0% { box-shadow: 0 0 0 0px rgba(11, 94, 215, 0.4); }
+      50% { box-shadow: 0 0 0 4px rgba(11, 94, 215, 0.2); }
+      100% { box-shadow: 0 0 0 0px rgba(11, 94, 215, 0); }
+    }
+
+    .highlight-flash {
+      animation: pulse-highlight 1.5s ease-in-out 2;
+      border-color: var(--primary) !important;
+    }
   </style>
 </head>
 <body>
@@ -819,6 +1158,7 @@
         <div class="nav-links">
           <a href="#why">Why LED</a>
           <a href="#industries">Who It’s For</a>
+          <a href="#calculator">Calculator</a>
           <a href="#pricing">Pricing</a>
           <a href="#routes">Routes</a>
           <a href="#contact">Contact</a>
@@ -1004,6 +1344,127 @@
       </div>
     </section>
 
+    <!-- Campaign Calculator -->
+    <section id="calculator" style="background: radial-gradient(circle at bottom right, #f0f4f8, #ffffff); border-bottom: 1px solid var(--border);">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Campaign Budget &amp; ROI Estimator</h2>
+          <p class="section-subtitle">
+            Slide and customize parameters to calculate cost, bulk discounts, and estimated impressions instantly.
+          </p>
+        </div>
+        <div class="calc-grid">
+          <!-- Inputs Column -->
+          <div class="calc-card calc-inputs">
+            <div class="calc-group">
+              <div class="calc-label-row">
+                <span class="calc-label">Number of LED Trucks</span>
+                <span class="calc-value" id="val-trucks">1 Truck</span>
+              </div>
+              <input type="range" class="calc-slider" id="input-trucks" min="1" max="10" value="1" />
+              <div class="slider-ticks">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+              </div>
+            </div>
+
+            <div class="calc-group">
+              <div class="calc-label-row">
+                <span class="calc-label">Campaign Duration (Days)</span>
+                <span class="calc-value" id="val-duration">1 Day</span>
+              </div>
+              <input type="range" class="calc-slider" id="input-duration" min="1" max="90" value="1" />
+              <div class="slider-ticks">
+                <span>1d</span><span>15d</span><span>30d</span><span>45d</span><span>60d</span><span>75d</span><span>90d</span>
+              </div>
+            </div>
+
+            <div class="calc-group">
+              <label class="calc-label">Daily Run Duration</label>
+              <div class="calc-radio-group">
+                <label class="calc-radio-btn active" id="btn-hours-4">
+                  <input type="radio" name="input-hours" value="4" checked />
+                  <span class="radio-title">4 Hours</span>
+                  <span class="radio-subtitle">Starter Rate</span>
+                </label>
+                <label class="calc-radio-btn" id="btn-hours-8">
+                  <input type="radio" name="input-hours" value="8" />
+                  <span class="radio-title">8 Hours</span>
+                  <span class="radio-subtitle">Business Rate</span>
+                </label>
+                <label class="calc-radio-btn" id="btn-hours-12">
+                  <input type="radio" name="input-hours" value="12" />
+                  <span class="radio-title">12 Hours</span>
+                  <span class="radio-subtitle">Premium Rate</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="calc-group">
+              <label class="calc-label" for="input-region">Target NCR Region</label>
+              <select class="form-input" id="input-region" style="background-color: #ffffff; cursor: pointer; padding: 10px;">
+                <option value="Delhi">Delhi NCR (Standard)</option>
+                <option value="Delhi-Core">Delhi Prime (Connaught Place, Karol Bagh)</option>
+                <option value="Noida">Noida / Greater Noida</option>
+                <option value="Gurgaon">Gurgaon / Cyber City</option>
+                <option value="Ghaziabad">Ghaziabad / Indirapuram</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Outputs Column -->
+          <div class="calc-card calc-outputs">
+            <div class="calc-output-header">Your Campaign Estimate</div>
+            
+            <div class="calc-metrics">
+              <div class="calc-metric-box">
+                <div class="calc-metric-label">Estimated Views</div>
+                <div class="calc-metric-val" id="out-views">30,000+</div>
+                <div class="calc-metric-sub">Daily Traffic Impact</div>
+              </div>
+              <div class="calc-metric-box">
+                <div class="calc-metric-label">Applied Discount</div>
+                <div class="calc-metric-val" id="out-discount" style="color: var(--accent);">0%</div>
+                <div class="calc-metric-sub" id="out-discount-reason">Single-day run</div>
+              </div>
+            </div>
+
+            <div class="calc-breakdown">
+              <div class="calc-breakdown-row">
+                <span>Standard Daily Cost (per truck):</span>
+                <span id="out-standard-daily">₹4,999</span>
+              </div>
+              <div class="calc-breakdown-row">
+                <span>Subtotal (Standard):</span>
+                <span id="out-subtotal">₹4,999</span>
+              </div>
+              <div class="calc-breakdown-row discount-row" id="discount-breakdown-row" style="display: none; color: #16a34a; font-weight: 600;">
+                <span>Bulk Discount Saved:</span>
+                <span id="out-discount-saved">-₹0</span>
+              </div>
+              <div class="calc-breakdown-row">
+                <span>GST (18%):</span>
+                <span id="out-gst">₹900</span>
+              </div>
+              <div class="calc-divider"></div>
+              <div class="calc-total-row">
+                <span>Estimated Total:</span>
+                <span id="out-total">₹5,899</span>
+              </div>
+            </div>
+
+            <div class="calc-actions">
+              <button class="btn btn-primary" id="btn-calc-apply" style="width: 100%;">
+                Apply Quote to Booking Form
+              </button>
+              <button class="btn btn-outline btn-calc-whatsapp" id="btn-calc-whatsapp" style="width: 100%; border-color: #25d366; color: #25d366; background: transparent;">
+                💬 Enquire via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Pricing -->
     <section id="pricing">
       <div class="container">
@@ -1175,11 +1636,12 @@
         </div>
         <div class="contact-grid">
           <div class="contact-form">
-            <form>
+            <form id="contact-form">
               <div class="form-row">
                 <div class="form-group">
-                  <label class="form-label" for="name">Name</label>
-                  <input class="form-input" id="name" name="name" placeholder="Your full name" />
+                  <label class="form-label" for="name">Name <span style="color: #dc3545;">*</span></label>
+                  <input class="form-input" id="name" name="name" placeholder="Your full name" required />
+                  <div class="form-error-msg" id="error-name">Please enter your name.</div>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="business">Business Name</label>
@@ -1188,8 +1650,9 @@
               </div>
               <div class="form-row">
                 <div class="form-group">
-                  <label class="form-label" for="phone">Phone (WhatsApp preferred)</label>
-                  <input class="form-input" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" />
+                  <label class="form-label" for="phone">Phone (WhatsApp preferred) <span style="color: #dc3545;">*</span></label>
+                  <input class="form-input" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required />
+                  <div class="form-error-msg" id="error-phone">Please enter a valid 10-digit mobile number.</div>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="city">City</label>
@@ -1245,6 +1708,7 @@
       <div class="footer-inner">
         <div class="footer-links">
           <a href="#why">Why LED</a>
+          <a href="#calculator">Calculator</a>
           <a href="#pricing">Pricing</a>
           <a href="#routes">Routes</a>
           <a href="#gallery">Sample Ads</a>
@@ -1259,9 +1723,345 @@
     </div>
   </footer>
 
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="success-modal">
+    <div class="modal-card">
+      <div class="modal-close" id="modal-close-btn">&times;</div>
+      <div class="modal-icon">🎉</div>
+      <h3 class="modal-title">Campaign Inquiry Received!</h3>
+      <p class="modal-text">
+        Thank you <strong id="summary-name"></strong>. We have successfully received your campaign details.
+      </p>
+      <div class="modal-summary">
+        <div class="modal-summary-item">
+          <span>Business Name:</span>
+          <span id="summary-business">-</span>
+        </div>
+        <div class="modal-summary-item">
+          <span>Phone / WhatsApp:</span>
+          <span id="summary-phone">-</span>
+        </div>
+        <div class="modal-summary-item">
+          <span>City / Target Area:</span>
+          <span id="summary-city">-</span>
+        </div>
+        <div class="modal-summary-item" id="summary-calc-row" style="display: none; border-top: 1px dashed var(--border); margin-top: 6px; padding-top: 6px;">
+          <span>Estimated Quote:</span>
+          <span id="summary-quote" style="color: var(--accent); font-weight: 600;">-</span>
+        </div>
+      </div>
+      <p class="modal-text" style="font-size: 0.8rem; color: var(--muted); margin-top: 12px;">
+        Our team will get back to you on <strong id="summary-phone-back"></strong> within 30 minutes.
+      </p>
+      <div style="margin-top: 16px;">
+        <button class="btn btn-primary" id="btn-modal-close" style="width: 100%;">Awesome, got it!</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Set current year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // --- Campaign Budget & ROI Calculator ---
+    const inputTrucks = document.getElementById('input-trucks');
+    const inputDuration = document.getElementById('input-duration');
+    const inputRegion = document.getElementById('input-region');
+    const radioButtons = document.querySelectorAll('input[name="input-hours"]');
+    
+    const valTrucks = document.getElementById('val-trucks');
+    const valDuration = document.getElementById('val-duration');
+    
+    const outViews = document.getElementById('out-views');
+    const outDiscount = document.getElementById('out-discount');
+    const outDiscountReason = document.getElementById('out-discount-reason');
+    const outStandardDaily = document.getElementById('out-standard-daily');
+    const outSubtotal = document.getElementById('out-subtotal');
+    const discountBreakdownRow = document.getElementById('discount-breakdown-row');
+    const outDiscountSaved = document.getElementById('out-discount-saved');
+    const outGst = document.getElementById('out-gst');
+    const outTotal = document.getElementById('out-total');
+
+    const btnCalcApply = document.getElementById('btn-calc-apply');
+    const btnCalcWhatsapp = document.getElementById('btn-calc-whatsapp');
+    const contactMessage = document.getElementById('message');
+    const contactCity = document.getElementById('city');
+
+    let currentEstimateString = "";
+    let isCalcQuoteApplied = false;
+    let appliedQuoteValue = "";
+
+    // Helper to format Indian currency
+    function formatINR(amount) {
+      return '₹' + Math.round(amount).toLocaleString('en-IN');
+    }
+
+    function calculateCampaign() {
+      const trucks = parseInt(inputTrucks.value);
+      const duration = parseInt(inputDuration.value);
+      
+      let hours = 4;
+      radioButtons.forEach(radio => {
+        if (radio.checked) {
+          hours = parseInt(radio.value);
+        }
+      });
+
+      const region = inputRegion.value;
+      const regionText = inputRegion.options[inputRegion.selectedIndex].text;
+
+      // Update text indicators
+      valTrucks.textContent = trucks === 1 ? '1 Truck' : trucks + ' Trucks';
+      valDuration.textContent = duration === 1 ? '1 Day' : duration + ' Days';
+
+      // Base rate based on plan
+      let baseRatePerDay = 4999;
+      let planName = "Starter (4 Hours/day)";
+      if (hours === 8) {
+        baseRatePerDay = 9999;
+        planName = "Business (8 Hours/day)";
+      } else if (hours === 12) {
+        baseRatePerDay = 24999;
+        planName = "Premium (12 Hours/day)";
+      }
+
+      // Region multiplier
+      let regionMultiplier = 1.0;
+      if (region === 'Delhi-Core') {
+        regionMultiplier = 1.15;
+      } else if (region === 'Gurgaon') {
+        regionMultiplier = 1.05;
+      }
+
+      const standardDailyPerTruck = baseRatePerDay * regionMultiplier;
+      const subtotalStandard = standardDailyPerTruck * trucks * duration;
+
+      // Applied discount calculation
+      let durationDiscountPct = 0;
+      let discountReason = "Single-day run";
+      
+      if (duration >= 30) {
+        durationDiscountPct = 25;
+        discountReason = "30+ Days bulk discount";
+      } else if (duration >= 15) {
+        durationDiscountPct = 15;
+        discountReason = "15+ Days bulk discount";
+      } else if (duration >= 7) {
+        durationDiscountPct = 10;
+        discountReason = "7+ Days bulk discount";
+      } else if (duration > 1) {
+        discountReason = "Short-run duration";
+      }
+
+      let truckDiscountPct = 0;
+      if (trucks >= 2) {
+        truckDiscountPct = 5;
+        discountReason += " + Multi-truck tier";
+      }
+
+      const totalDiscountPct = durationDiscountPct + truckDiscountPct;
+      const discountSaved = subtotalStandard * (totalDiscountPct / 100);
+      const subtotalAfterDiscount = subtotalStandard - discountSaved;
+
+      const gstAmount = subtotalAfterDiscount * 0.18;
+      const totalEstimate = subtotalAfterDiscount + gstAmount;
+
+      // Impressions
+      let viewsPerTruckPerDay = 30000;
+      if (hours === 8) {
+        viewsPerTruckPerDay = 60000;
+      } else if (hours === 12) {
+        viewsPerTruckPerDay = 100000;
+      }
+      const totalViews = viewsPerTruckPerDay * trucks * duration;
+
+      // Update UI elements
+      outViews.textContent = totalViews.toLocaleString('en-IN') + '+';
+      outDiscount.textContent = totalDiscountPct + '%';
+      outDiscountReason.textContent = discountReason;
+      outStandardDaily.textContent = formatINR(standardDailyPerTruck);
+      outSubtotal.textContent = formatINR(subtotalStandard);
+
+      if (totalDiscountPct > 0) {
+        discountBreakdownRow.style.display = 'flex';
+        outDiscountSaved.textContent = '-' + formatINR(discountSaved);
+      } else {
+        discountBreakdownRow.style.display = 'none';
+      }
+
+      outGst.textContent = formatINR(gstAmount);
+      outTotal.textContent = formatINR(totalEstimate);
+
+      appliedQuoteValue = formatINR(totalEstimate);
+      currentEstimateString = `Hello! I would like to inquire about a custom Mobile LED Truck Campaign:
+- Plan: ${planName}
+- Number of Trucks: ${trucks}
+- Campaign Duration: ${duration} Day${duration > 1 ? 's' : ''}
+- Target NCR Region: ${regionText}
+- Standard Cost (Subtotal): ${formatINR(subtotalStandard)}
+- Discount Applied: ${totalDiscountPct}% (${discountReason})
+- Estimated Total Cost: ${formatINR(totalEstimate)} (including 18% GST)
+- Estimated Campaign Views: ${totalViews.toLocaleString('en-IN')}+ views
+Please check the availability and routes.`;
+    }
+
+    // Attach listeners
+    inputTrucks.addEventListener('input', calculateCampaign);
+    inputDuration.addEventListener('input', calculateCampaign);
+    inputRegion.addEventListener('change', calculateCampaign);
+
+    // Custom Radio Button behavior styling
+    radioButtons.forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        // Toggle active class on labels
+        document.querySelectorAll('.calc-radio-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        e.target.closest('.calc-radio-btn').classList.add('active');
+        calculateCampaign();
+      });
+    });
+
+    // Calc action buttons
+    btnCalcApply.addEventListener('click', () => {
+      isCalcQuoteApplied = true;
+      contactMessage.value = currentEstimateString;
+      
+      // Auto-set the city input if empty
+      if (!contactCity.value.trim()) {
+        const regionVal = inputRegion.value;
+        if (regionVal === 'Delhi-Core' || regionVal === 'Delhi') {
+          contactCity.value = "Delhi";
+        } else {
+          contactCity.value = regionVal;
+        }
+      }
+
+      // Smooth scroll to Contact Form
+      const contactSection = document.getElementById('contact');
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+
+      // Highlight the textarea with an animation
+      contactMessage.classList.add('highlight-flash');
+      setTimeout(() => {
+        contactMessage.classList.remove('highlight-flash');
+      }, 3000);
+    });
+
+    btnCalcWhatsapp.addEventListener('click', () => {
+      const waText = encodeURIComponent(currentEstimateString);
+      // Main WhatsApp number from the page is +91 1234567890
+      const waUrl = `https://wa.me/911234567890?text=${waText}`;
+      window.open(waUrl, '_blank');
+    });
+
+    // Run initial calculation
+    calculateCampaign();
+
+
+    // --- Form Validation, Submission & Modal Handler ---
+    const contactForm = document.getElementById('contact-form');
+    const successModal = document.getElementById('success-modal');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const btnModalClose = document.getElementById('btn-modal-close');
+
+    const inputName = document.getElementById('name');
+    const inputPhone = document.getElementById('phone');
+    const inputCity = document.getElementById('city');
+    const inputBusiness = document.getElementById('business');
+
+    const errorName = document.getElementById('error-name');
+    const errorPhone = document.getElementById('error-phone');
+
+    // Phone validation regex for 10-digit Indian phone numbers
+    function isValidIndianPhone(phone) {
+      // Stripping spaces, dashes, +91 etc.
+      const cleanPhone = phone.replace(/[\s\-()]/g, '').replace(/^\+91/, '').replace(/^0/, '');
+      return /^[6-9]\d{9}$/.test(cleanPhone);
+    }
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      let isValid = true;
+
+      // Validate Name
+      if (!inputName.value.trim()) {
+        inputName.classList.add('invalid');
+        errorName.style.display = 'block';
+        isValid = false;
+      } else {
+        inputName.classList.remove('invalid');
+        errorName.style.display = 'none';
+      }
+
+      // Validate Phone
+      if (!inputPhone.value.trim() || !isValidIndianPhone(inputPhone.value)) {
+        inputPhone.classList.add('invalid');
+        errorPhone.style.display = 'block';
+        isValid = false;
+      } else {
+        inputPhone.classList.remove('invalid');
+        errorPhone.style.display = 'none';
+      }
+
+      if (!isValid) {
+        return;
+      }
+
+      // Populate Success Modal Summary
+      document.getElementById('summary-name').textContent = inputName.value.trim();
+      document.getElementById('summary-business').textContent = inputBusiness.value.trim() || "N/A";
+      document.getElementById('summary-phone').textContent = inputPhone.value.trim();
+      document.getElementById('summary-phone-back').textContent = inputPhone.value.trim();
+      document.getElementById('summary-city').textContent = inputCity.value.trim() || "Delhi NCR";
+
+      const summaryCalcRow = document.getElementById('summary-calc-row');
+      const summaryQuote = document.getElementById('summary-quote');
+
+      if (isCalcQuoteApplied && contactMessage.value.includes(appliedQuoteValue)) {
+        summaryCalcRow.style.display = 'flex';
+        summaryQuote.textContent = appliedQuoteValue;
+      } else {
+        summaryCalcRow.style.display = 'none';
+      }
+
+      // Open Modal
+      successModal.classList.add('active');
+    });
+
+    // Close Modal actions
+    function closeModal() {
+      successModal.classList.remove('active');
+      // Reset form and calculator integration state
+      contactForm.reset();
+      isCalcQuoteApplied = false;
+    }
+
+    modalCloseBtn.addEventListener('click', closeModal);
+    btnModalClose.addEventListener('click', closeModal);
+    
+    // Close modal when clicking on dark overlay
+    successModal.addEventListener('click', (e) => {
+      if (e.target === successModal) {
+        closeModal();
+      }
+    });
+
+    // Real-time input validation cleanups
+    inputName.addEventListener('input', () => {
+      if (inputName.value.trim()) {
+        inputName.classList.remove('invalid');
+        errorName.style.display = 'none';
+      }
+    });
+
+    inputPhone.addEventListener('input', () => {
+      if (inputPhone.value.trim() && isValidIndianPhone(inputPhone.value)) {
+        inputPhone.classList.remove('invalid');
+        errorPhone.style.display = 'none';
+      }
+    });
   </script>
 </body>
 </html>

@@ -1760,8 +1760,31 @@
   </div>
 
   <script>
+    // Configuration Constants (Update WHATSAPP_PHONE_NUMBER with your actual business number before production deployment)
+    const WHATSAPP_PHONE_NUMBER = "911234567890";
+
     // Set current year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Helper to format Indian currency
+    function formatINR(amount) {
+      return '₹' + Math.round(amount).toLocaleString('en-IN');
+    }
+
+    // Standardized message generation helper for CRM and WhatsApp
+    function generateCampaignInquiryMessage(campaign) {
+      return `Hello! I would like to inquire about a custom Mobile LED Truck Campaign:
+* Plan: ${campaign.planName}
+* Number of Trucks: ${campaign.trucks}
+* Campaign Duration: ${campaign.duration} Day${campaign.duration > 1 ? 's' : ''}
+* Target NCR Region: ${campaign.regionText}
+* Standard Cost (Subtotal): ${formatINR(campaign.subtotalStandard)}
+* Discount Applied: ${campaign.totalDiscountPct}% (${campaign.discountReason})
+* Estimated Total Cost: ${formatINR(campaign.totalEstimate)} (including 18% GST)
+* Estimated Campaign Views: ${campaign.totalViews.toLocaleString('en-IN')}+ views
+
+Please check availability and routes.`;
+    }
 
     // --- Campaign Budget & ROI Calculator ---
     const inputTrucks = document.getElementById('input-trucks');
@@ -1789,12 +1812,7 @@
 
     let currentEstimateString = "";
     let isCalcQuoteApplied = false;
-    let appliedQuoteValue = "";
-
-    // Helper to format Indian currency
-    function formatINR(amount) {
-      return '₹' + Math.round(amount).toLocaleString('en-IN');
-    }
+    let appliedCampaignDetails = null;
 
     function calculateCampaign() {
       const trucks = parseInt(inputTrucks.value);
@@ -1836,30 +1854,37 @@
       const standardDailyPerTruck = baseRatePerDay * regionMultiplier;
       const subtotalStandard = standardDailyPerTruck * trucks * duration;
 
-      // Applied discount calculation
+      // Applied discount calculation with structured list
+      let discountParts = [];
       let durationDiscountPct = 0;
-      let discountReason = "Single-day run";
       
       if (duration >= 30) {
         durationDiscountPct = 25;
-        discountReason = "30+ Days bulk discount";
+        discountParts.push("30+ Days Bulk (25%)");
       } else if (duration >= 15) {
         durationDiscountPct = 15;
-        discountReason = "15+ Days bulk discount";
+        discountParts.push("15+ Days Bulk (15%)");
       } else if (duration >= 7) {
         durationDiscountPct = 10;
-        discountReason = "7+ Days bulk discount";
-      } else if (duration > 1) {
-        discountReason = "Short-run duration";
+        discountParts.push("7+ Days Bulk (10%)");
       }
 
       let truckDiscountPct = 0;
       if (trucks >= 2) {
         truckDiscountPct = 5;
-        discountReason += " + Multi-truck tier";
+        discountParts.push("Multi-Truck Tier (5%)");
       }
 
       const totalDiscountPct = durationDiscountPct + truckDiscountPct;
+      let discountReason = "No discount applied";
+      if (discountParts.length > 0) {
+        discountReason = discountParts.join(" + ");
+      } else if (duration === 1) {
+        discountReason = "Single-day run";
+      } else {
+        discountReason = "Short-run pricing";
+      }
+
       const discountSaved = subtotalStandard * (totalDiscountPct / 100);
       const subtotalAfterDiscount = subtotalStandard - discountSaved;
 
@@ -1892,17 +1917,23 @@
       outGst.textContent = formatINR(gstAmount);
       outTotal.textContent = formatINR(totalEstimate);
 
-      appliedQuoteValue = formatINR(totalEstimate);
-      currentEstimateString = `Hello! I would like to inquire about a custom Mobile LED Truck Campaign:
-- Plan: ${planName}
-- Number of Trucks: ${trucks}
-- Campaign Duration: ${duration} Day${duration > 1 ? 's' : ''}
-- Target NCR Region: ${regionText}
-- Standard Cost (Subtotal): ${formatINR(subtotalStandard)}
-- Discount Applied: ${totalDiscountPct}% (${discountReason})
-- Estimated Total Cost: ${formatINR(totalEstimate)} (including 18% GST)
-- Estimated Campaign Views: ${totalViews.toLocaleString('en-IN')}+ views
-Please check the availability and routes.`;
+      currentEstimateString = generateCampaignInquiryMessage({
+        planName: planName,
+        trucks: trucks,
+        duration: duration,
+        regionText: regionText,
+        subtotalStandard: subtotalStandard,
+        totalDiscountPct: totalDiscountPct,
+        discountReason: discountReason,
+        totalEstimate: totalEstimate,
+        totalViews: totalViews
+      });
+
+      // Keep tracking active campaign detail state
+      appliedCampaignDetails = {
+        total: formatINR(totalEstimate),
+        summaryText: `${trucks} Truck${trucks > 1 ? 's' : ''} • ${duration} Day${duration > 1 ? 's' : ''} (${planName})`
+      };
     }
 
     // Attach listeners
@@ -1950,8 +1981,8 @@ Please check the availability and routes.`;
 
     btnCalcWhatsapp.addEventListener('click', () => {
       const waText = encodeURIComponent(currentEstimateString);
-      // Main WhatsApp number from the page is +91 1234567890
-      const waUrl = `https://wa.me/911234567890?text=${waText}`;
+      // Main WhatsApp link formatted using wa.me with pre-filled message
+      const waUrl = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${waText}`;
       window.open(waUrl, '_blank');
     });
 
@@ -1973,11 +2004,24 @@ Please check the availability and routes.`;
     const errorName = document.getElementById('error-name');
     const errorPhone = document.getElementById('error-phone');
 
-    // Phone validation regex for 10-digit Indian phone numbers
+    // Robust phone validation helper for Indian mobile numbers
     function isValidIndianPhone(phone) {
-      // Stripping spaces, dashes, +91 etc.
-      const cleanPhone = phone.replace(/[\s\-()]/g, '').replace(/^\+91/, '').replace(/^0/, '');
-      return /^[6-9]\d{9}$/.test(cleanPhone);
+      // Strip all spaces, dashes, parentheses
+      let clean = phone.replace(/[\s\-()]/g, '');
+      
+      // Handle +91 prefix
+      if (clean.startsWith('+91')) {
+        clean = clean.substring(3);
+      } else if (clean.startsWith('91') && clean.length === 12) {
+        // If it starts with 91 and has exactly 12 digits, strip country code
+        clean = clean.substring(2);
+      } else if (clean.startsWith('0') && clean.length === 11) {
+        // If it starts with 0 and has exactly 11 digits, strip leading zero
+        clean = clean.substring(1);
+      }
+      
+      // Should be exactly 10 digits starting with 6, 7, 8, or 9
+      return /^[6-9]\d{9}$/.test(clean);
     }
 
     contactForm.addEventListener('submit', (e) => {
@@ -2019,9 +2063,10 @@ Please check the availability and routes.`;
       const summaryCalcRow = document.getElementById('summary-calc-row');
       const summaryQuote = document.getElementById('summary-quote');
 
-      if (isCalcQuoteApplied && contactMessage.value.includes(appliedQuoteValue)) {
+      // Use the robust flag instead of text checking
+      if (isCalcQuoteApplied && appliedCampaignDetails) {
         summaryCalcRow.style.display = 'flex';
-        summaryQuote.textContent = appliedQuoteValue;
+        summaryQuote.textContent = `${appliedCampaignDetails.total} (${appliedCampaignDetails.summaryText})`;
       } else {
         summaryCalcRow.style.display = 'none';
       }
